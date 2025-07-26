@@ -17,7 +17,7 @@
           強力な魔法の盾を持っており、その耐久力は <code class="answer-code">${this.enemy.shield} * ${this.enemy.power}</code> という計算で求められます。<br>
           コード入力欄でこの計算を行い、変数 <code class="answer-code">attack</code> に計算結果を代入して、盾を破壊してください！`;
         typeWriter(teacherMessage, initialMessage);
-        codeEditor.value = `let attack = ${this.enemy.shield} * ${this.enemy.power};`;
+        codeEditor.value = `let attack = `;
       },
       validate: function (code) {
         const match = code.match(/let\s+attack\s*=\s*(.*?);/);
