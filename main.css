@@ -1,0 +1,430 @@
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap');
+
+/* --- CSS変数定義 --- */
+:root {
+  --font-primary: 'DotGothic16', sans-serif;
+  --font-accent: 'Press Start 2P', cursive;
+  --color-bg: #1a1a1a;
+  --color-text: #e0e0e0;
+  --color-border: #f0f0f0;
+  --color-window-bg: #0a0a0a;
+  --color-accent: #88ddff;
+  --color-success: #aaffaa;
+  --color-error: #ffaaaa;
+  --color-warning: #ffff88;
+  --color-button-primary: #2a75d1;
+  --color-button-primary-hover: #4a95f1;
+}
+
+/* --- 基本スタイル --- */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-accent);
+}
+
+.hidden {
+  display: none !important;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 項目間のスペース */
+  align-items: center;
+  width: 100%;
+}
+
+
+/* --- 初期画面 --- */
+#initial-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+#initial-screen h1 {
+  font-size: 2em;
+  color: var(--color-accent);
+  text-shadow: 3px 3px 0px #000;
+}
+
+/* --- ボタン共通 --- */
+.btn,
+.btn-primary,
+.btn-secondary {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  padding: 12px 24px;
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #4a95f1;
+  color: #fff;
+  min-width: 200px;
+}
+
+.btn:hover:not(:disabled),
+.btn-primary:hover:not(:disabled),
+.btn-secondary:hover:not(:disabled) {
+  background-color: #666;
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  background-color: #222;
+  color: #777;
+  cursor: not-allowed;
+  border-color: #777;
+}
+
+.btn-primary {
+  background-color: var(--color-button-primary);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--color-button-primary-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #555;
+}
+
+
+/* --- クレジットモーダル --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: var(--color-window-bg);
+  margin: 15% auto;
+  padding: 30px;
+  border: 2px solid var(--color-border);
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+  text-align: left;
+  box-shadow: 4px 4px 0px 0px rgba(240, 240, 240, 0.5);
+}
+
+.modal-content h2 {
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-content li {
+  margin-bottom: 10px;
+}
+
+.modal-content a {
+  color: var(--color-success);
+  text-decoration: none;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* --- ゲームコンテナ --- */
+#game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 960px;
+}
+
+.window {
+  background-color: var(--color-window-bg);
+  border: 2px solid var(--color-border);
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: left;
+  width: 100%;
+}
+
+.window-title {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  color: var(--color-accent);
+  margin: -20px -20px 15px -20px;
+  padding: 8px 20px;
+  border-bottom: 2px solid var(--color-border);
+  background-color: #2c2c2c;
+}
+
+/* --- 上部パネル（先生・敵） --- */
+.game-display-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.enemy-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.teacher-area {
+  min-height: auto;
+}
+
+.enemy-area {
+  flex: 1;
+  text-align: center;
+}
+
+.enemy-info-window {
+  flex: 2;
+}
+
+
+#enemy-sprite {
+  width: 100%; /* 横幅を親要素いっぱいに広げる */
+  height: auto; /* アスペクト比を維持 */
+  max-height: 100%; /* 親要素の高さを超えないようにする */
+  object-fit: contain; /* 画像を親要素内に収める */
+  image-rendering: pixelated;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#enemy-info {
+  font-family: monospace;
+  white-space: pre-wrap;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+/* --- 中央パネル --- */
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#code-editor {
+  width: 100%;
+  height: 120px;
+  background-color: #252525;
+  color: var(--color-text);
+  border: 1px solid #555;
+  font-family: monospace;
+  font-size: 18px;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* --- 下部パネル（ログ） --- */
+#battle-log {
+  height: 150px;
+  overflow-y: auto;
+  padding-right: 10px;
+  text-align: left;
+}
+
+#battle-log p {
+  margin: 0 0 10px 0;
+  padding-left: 2em;
+  position: relative;
+}
+
+#battle-log p::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#battle-log .log-normal::before {
+  content: '▶ ';
+}
+
+#battle-log .log-success::before {
+  content: '★ ';
+  color: var(--color-success);
+}
+
+#battle-log .log-error::before {
+  content: '❗ ';
+  color: var(--color-error);
+}
+
+#battle-log .log-system::before {
+  content: '⚙️ ';
+}
+
+.answer {
+  background-color: #202030;
+  padding: 15px;
+  border: 1px dashed var(--color-accent);
+  margin-top: 10px;
+}
+
+.answer-code {
+  font-family: monospace;
+  color: var(--color-success);
+  background-color: #333;
+  padding: 2px 5px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* アニメーション */
+.shake {
+  animation: shake-animation 0.4s;
+}
+
+@keyframes shake-animation {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateX(5px) rotate(1deg);
+  }
+
+  75% {
+    transform: translateX(-3px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+#stage-select-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+/* --- レスポンシブ対応 --- */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  #initial-screen h1 {
+    font-size: 1.5em;
+  }
+  
+  .btn, .btn-primary, .btn-secondary {
+      padding: 10px 15px;
+      font-size: 12px;
+  }
+
+  .enemy-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .enemy-area, .enemy-info-window {
+    width: 100%;
+    flex: unset;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .action-buttons .btn {
+      width: 100%;
+      min-width: unset;
+  }
+
+  #stage-buttons .btn {
+      width: 100%;
+      min-width: unset;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+    margin: 30% auto;
+  }
+
+  #code-editor {
+    height: 150px;
+    font-size: 16px;
+  }
+
+  #battle-log {
+      height: 120px;
+  }
+}

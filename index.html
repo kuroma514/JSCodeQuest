@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Code Quest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+  <div id="initial-screen">
+    <h1>JS Code Quest</h1>
+    <p>JavaScriptの基礎を学びながら、モンスターを倒していく学習ゲームです。</p>
+    <ul class="menu-list">
+      <li><button id="start-button" class="btn btn-primary">冒険を始める</button></li>
+      <li><button id="credit-button" class="btn btn-secondary">クレジット</button></li>
+    </ul>
+  </div>
+
+  <div id="credit-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>クレジット</h2>
+      <p>このゲームはJavaScriptの学習のために作成されました。</p>
+      <ul>
+        <li>制作時間6時間</li>
+        <li>フォント:
+            <a href="https://fonts.google.com/specimen/DotGothic16" target="_blank" rel="noopener noreferrer">DotGothic16</a>,
+            <a href="https://fonts.google.com/specimen/Press+Start+2P" target="_blank" rel="noopener noreferrer">Press Start 2P</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="stage-select-screen" class="hidden">
+    <h1>ステージ選択</h1>
+    <p>挑戦したいステージを選んでください。</p>
+    <ul class="menu-list">
+      <li>
+        <div id="stage-buttons" class="action-buttons"></div>
+      </li>
+      <li>
+        <button id="back-to-title" class="btn btn-secondary">タイトルに戻る</button>
+      </li>
+    </ul>
+  </div>
+
+  <div id="game-container" class="hidden">
+    <div class="game-display-panel">
+      <div class="window teacher-area">
+        <h3 class="window-title">▼ せんせい</h3>
+        <p id="teacher-message"></p>
+      </div>
+      <div class="enemy-container">
+        <div class="enemy-area">
+          <img id="enemy-sprite" src="" alt="敵キャラクター">
+        </div>
+        <div class="window enemy-info-window">
+          <h3 class="window-title">▼ 敵の情報</h3>
+          <pre><code id="enemy-info" class="language-js"></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="log-panel">
+      <div class="window">
+        <h3 class="window-title">▼ 戦闘ログ</h3>
+        <div id="battle-log"></div>
+      </div>
+      <div id="action-buttons" class="action-buttons">
+        </div>
+    </div>
+
+
+    <div class="control-panel">
+      <div class="window">
+        <h3 class="window-title">▼ コードを入力しよう</h3>
+        <textarea id="code-editor" spellcheck="false" rows="5"></textarea>
+      </div>
+      <button id="run-button" class="btn">実行</button>
+    </div>
+  </div>
+
+  <script>
+    // 各ステージファイルがこのオブジェクトにステージデータを登録します
+    window.stages = {};
+  </script>
+
+  <script src="utils.js"></script>
+  <script src="stage1.js"></script>
+  <script src="stage2.js"></script>
+  <script src="stage3.js"></script>
+  <script src="stage4.js"></script>
+  <script src="stage5.js"></script>
+  <script src="init.js"></script>
+
+</body>
+
+</html>
